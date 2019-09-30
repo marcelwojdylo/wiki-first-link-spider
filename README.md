@@ -2,7 +2,7 @@
 ## Overview
 This is a very simple python web-crawler/spider. It takes a URL from the English-language Wikipedia and generates a list of increasingly general connected terms. 
 ### Problem statement 
-I was curious to see where a user would end up if they were to follow the first link contained in the body of a Wikipedia article, and then kept applying the same logic until they encountered a previously visited article.
+I was curious to see where a user would end up if they were to follow the first link contained in the body of a Wikipedia article, and then kept applying the same logic until they encountered a previously visited article. I wanted to see the most common result of this logic when a random article is given, as well as the path the spider would take to get there.
 
 ### Results
 As it turns out, most randomly chosen Wikipedia articles, when this logic is applied to them, lead to either the article *Wisdom* or the article *Object of the mind*.
@@ -38,3 +38,15 @@ For instance, entering the URL for the *United States national missile defense* 
 {"page title":  "Reality", "first href":  "https://en.wikipedia.org/wiki/Object_of_the_mind"},
 {"page title":  "Object of the mind", "first href":  "https://en.wikipedia.org/wiki/Object_(philosophy)"}
 ```
+
+### Restrictions
+
+In order to avoid the chain of articles looping prematurely, I applied restrictions to the way the 'first link' is extracted. The spider will ignore the link and move on to find the next one in the following cases:
+
+- the link does not lead to a separate article
+- the link leads to a wikipedia help article
+- the link leads to a file
+- the link leads to a disambiguation page
+- the link leads to an article on a language or a writing system (the reason being that many Wiki articles begin with linguistic information on the term's name, which meant that before applying this restriction most scrapes quickly fell into a chain of language-related terms)
+
+Language and writing system articles to be excluded were scraped from appropriate index pages.
