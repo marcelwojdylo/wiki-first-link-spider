@@ -1,6 +1,7 @@
 # Wiki first-link spider
 ## Overview
-This is a very simple python web-crawler/spider. It takes a URL from the English-language Wikipedia and generates a list of increasingly general connected terms. 
+This is a very simple python web-crawler/spider. It takes a URL from the English-language Wikipedia and follows the first link contained in the body of the article, applying the same logic recursively until a duplicate result is reached.
+
 ### Problem statement 
 I was curious to see where a user would end up if they were to follow the first link contained in the body of a Wikipedia article, and then kept applying the same logic until they encountered a previously visited article. I wanted to see the most common result of this logic when a random article is given, as well as the path the spider would take to get there.
 
