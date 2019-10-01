@@ -1,4 +1,5 @@
 # Wiki first-link spider
+![Crawl results screenshot](screenshots/results.png)
 ## Overview
 This is a very simple python web-crawler/spider. It takes a URL from the English-language Wikipedia and follows the first link contained in the body of the article, applying the same logic recursively until a duplicate result is reached.
 
